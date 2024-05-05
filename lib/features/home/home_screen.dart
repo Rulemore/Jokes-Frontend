@@ -10,10 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 int selectedIndex = 0;
-List<NavigationRailDestination> navigationRailDestination = const [
-  NavigationRailDestination(icon: Icon(Icons.home), label: Text('Главная')),
-  NavigationRailDestination(icon: Icon(Icons.person), label: Text('Личный кабинет')),
-];
 
 final List<Widget> screens = [
   const MainScreen(),
@@ -30,20 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 28),
         ),
       ),
-      body: Row(
-        children: [
-          NavigationRail(
-            destinations: navigationRailDestination,
-            selectedIndex: selectedIndex,
-            onDestinationSelected: (index) => setState(() {
-              selectedIndex = index;
-            }),
-            elevation: 10,
-            extended: false,
-          ),
-          screens[selectedIndex],
-        ],
-      ),
+      body: MainScreen(),
     );
   }
 }

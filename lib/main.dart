@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zlp_jokes/utils/app_colors.dart';
 import 'package:zlp_jokes/utils/routes.dart';
 
 void main() {
@@ -12,14 +13,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ZLP jokes',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, brightness: Brightness.dark),
-        useMaterial3: true,
-        // brightness: Brightness.light,
-      ),
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.homeScreen,
       routes: routes,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: AppColors.color900,
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        shadowColor: const Color(0x00000000),
+      ),
     );
   }
 }
