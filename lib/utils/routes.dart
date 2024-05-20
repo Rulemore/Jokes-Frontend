@@ -9,6 +9,8 @@ final Map<String, WidgetBuilder> routes = {
   // Routes.confirmResetPasswordScreen: (context) => const ConfirmResetPasswordScreen(),
   // Routes.changePasswordScreen: (context) => const ChangePasswordScreen(),
   Routes.homeScreen: (context) => const HomeScreen(),
+
+  // Routes.jokeScreen: (context) => const JokeScreen(),
 };
 
 sealed class Routes {
@@ -25,4 +27,6 @@ sealed class Routes {
   // static const String changePasswordScreen = '/start/auth/reset/confirm/changed';
 
   static const String homeScreen = '/';
+
+  static const String jokeScreen = '/joke';
 }

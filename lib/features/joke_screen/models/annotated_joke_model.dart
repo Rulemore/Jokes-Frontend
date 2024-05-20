@@ -33,29 +33,30 @@ class JokePart {
   }
 }
 
-class JokeModel {
+class AnnotatedJokeModel {
   final List<JokePart> jokeParts;
+  final int id;
   String get plainText => jokeParts.map((e) => e.text).join();
 
-  JokeModel({required this.jokeParts});
+  AnnotatedJokeModel({required this.jokeParts, required this.id});
 
-  factory JokeModel.fromString(String input) {
-    final List<JokePart> parts = [];
-    final RegExp exp = RegExp(r'\[(.*?)\]');
-    int lastIndex = 0;
-    exp.allMatches(input).forEach((match) {
-      parts.add(JokePart(text: input.substring(lastIndex, match.start)));
-      parts.add(JokePart.fromString(match.group(1)!));
-      lastIndex = match.end;
-    });
+  // factory JokeModel.fromString(String input) {
+  //   final List<JokePart> parts = [];
+  //   final RegExp exp = RegExp(r'\[(.*?)\]');
+  //   int lastIndex = 0;
+  //   exp.allMatches(input).forEach((match) {
+  //     parts.add(JokePart(text: input.substring(lastIndex, match.start)));
+  //     parts.add(JokePart.fromString(match.group(1)!));
+  //     lastIndex = match.end;
+  //   });
 
-    if (lastIndex < input.length) {
-      parts.add(JokePart(text: input.substring(lastIndex)));
-    }
-    return JokeModel(jokeParts: parts);
-  }
+  //   if (lastIndex < input.length) {
+  //     parts.add(JokePart(text: input.substring(lastIndex)));
+  //   }
+  //   return JokeModel(jokeParts: parts, id: json['id']);
+  // }
 
-  factory JokeModel.fromJson(Map<String, dynamic> json) {
+  factory AnnotatedJokeModel.fromJson(Map<String, dynamic> json) {
     final String input = json['text'];
     final List<JokePart> parts = [];
     final RegExp exp = RegExp(r'\[(.*?)\]');
@@ -69,7 +70,7 @@ class JokeModel {
     if (lastIndex < input.length) {
       parts.add(JokePart(text: input.substring(lastIndex)));
     }
-    return JokeModel(jokeParts: parts);
+    return AnnotatedJokeModel(jokeParts: parts, id: json['id']);
   }
 
   @override
