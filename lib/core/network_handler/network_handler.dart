@@ -1,25 +1,27 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:zlp_jokes/utils/app_state.dart';
 
 typedef JSONObject = Map<String, dynamic>;
 typedef JSONList = List<JSONObject>;
 
+@injectable
 class NetworkHandler {
-  static AppStateSuccess<Map<String, dynamic>> parseResult(
+  static AppStateSuccess<T> parseResult<T>(
     Response<dynamic> resp,
   ) {
     switch (resp.statusCode) {
       case 200:
-        Map<String, dynamic> rawData = resp.data;
+        final T rawData = resp.data;
 
-        if (rawData.containsKey('data')) {
-          return AppStateSuccess<Map<String, dynamic>>(rawData['data']);
-        } else if (rawData.containsKey('token')) {
-          return AppStateSuccess<Map<String, dynamic>>(rawData);
+        if (rawData is Map && rawData.containsKey('data')) {
+          return AppStateSuccess<T>(rawData['data']);
+        } else if (rawData is Map && rawData.containsKey('token')) {
+          return AppStateSuccess<T>(rawData);
         }
-        return AppStateSuccess<Map<String, dynamic>>(rawData);
+        return AppStateSuccess<T>(rawData);
       case 204:
-        return AppStateSuccess<Map<String, dynamic>>();
+        return AppStateSuccess<T>();
       case 404:
         throw AppStateError(
           '[404] страница не найдена',

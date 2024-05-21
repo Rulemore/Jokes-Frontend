@@ -1,12 +1,12 @@
 name: zlp_jokes
 description: "A new Flutter project."
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
   dio: ^5.4.2+1
@@ -16,13 +16,19 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   flutter_staggered_grid_view: ^0.7.0
   fluttertoast: ^8.2.4
+  get_it: ^7.7.0
+  injectable: ^2.4.2
   intl: any
+  logger: ^2.3.0
 
 dev_dependencies:
   analyzer: ^6.2.0
+  build_runner: ^2.4.10
   flutter_lints: ^2.0.3
+
   flutter_test:
     sdk: flutter
+  injectable_generator: ^2.6.1
 
 flutter:
   uses-material-design: true

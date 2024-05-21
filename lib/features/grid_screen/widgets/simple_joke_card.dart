@@ -1,25 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zlp_jokes/features/grid_screen/models/joke_model.dart';
+import 'package:zlp_jokes/features/grid_screen/data/models/joke_model.dart';
 import 'package:zlp_jokes/utils/app_colors.dart';
 
-class JokeCard extends StatefulWidget {
-  final Map<String, dynamic> joke;
+class SimpleJokeCard extends StatelessWidget {
+  final JokeModel jokeModel;
 
-  const JokeCard({super.key, required this.joke});
-
-  @override
-  State<JokeCard> createState() => _JokeCardState();
-}
-
-class _JokeCardState extends State<JokeCard> {
-  late JokeModel jokeModel;
-
-  @override
-  void initState() {
-    jokeModel = JokeModel.fromJson(widget.joke);
-    super.initState();
-  }
+  const SimpleJokeCard({super.key, required this.jokeModel});
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +39,11 @@ class _JokeCardState extends State<JokeCard> {
                       style: BorderStyle.solid,
                     ),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
                     child: Text(
-                      '1.00',
-                      style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+                      jokeModel.rating.toStringAsFixed(2),
+                      style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -71,7 +58,13 @@ class _JokeCardState extends State<JokeCard> {
                   horizontal: 16,
                   vertical: 8,
                 ),
-                child: Text(jokeModel.text),
+                child: Text(
+                  jokeModel.text,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ),
             Row(

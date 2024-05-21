@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zlp_jokes/core/di/di.dart';
 import 'package:zlp_jokes/utils/app_colors.dart';
 import 'package:zlp_jokes/utils/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  confingureDependecies();
+
   runApp(const MyApp());
 }
 
@@ -19,6 +23,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           color: AppColors.color900,
+          elevation: 0,
+          surfaceTintColor: Colors.transparent,
         ),
         scaffoldBackgroundColor: Colors.white,
         shadowColor: const Color(0x00000000),
