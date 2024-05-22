@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 28, color: AppColors.color200),
           ),
         ),
-        body: GridScreen(),
+        body: const GridScreen(),
       ),
     );
   }

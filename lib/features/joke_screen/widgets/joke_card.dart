@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zlp_jokes/features/joke_screen/models/annotated_joke_model.dart';
 import 'package:zlp_jokes/utils/app_colors.dart';
 
@@ -109,7 +108,7 @@ class _JokeCardState extends State<JokeCard> {
             ),
             GestureDetector(
               onTap: () {
-                if (!widget.isJokePage) Navigator.of(context).pushNamed('/joke', arguments: jokeModel);
+                if (!widget.isJokePage) Navigator.of(context).pushNamed('/joke/1');
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(

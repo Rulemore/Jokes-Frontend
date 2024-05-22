@@ -13,4 +13,9 @@ class JokesRepository {
     final jokes = (response.data as List<dynamic>).map((e) => JokeModel.fromJson(e as Map<String, dynamic>)).toList();
     return jokes;
   }
+
+  Future<JokeModel> getJokeById(int id) async {
+    final response = await networkService.get('/joke/$id');
+    return JokeModel.fromJson(response.data);
+  }
 }

@@ -51,7 +51,7 @@ class SimpleJokeCard extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed('/joke', arguments: jokeModel);
+                Navigator.pushNamed(context, '/joke/${jokeModel.id}');
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(
